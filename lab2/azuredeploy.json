@@ -1,0 +1,43 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+        "parameters": {
+            "webappname": {
+                "type": "string"
+            }
+    },
+    "variables": {
+        "hostingplanname": "[concat(parameters('webappname'),'-plan')]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2016-08-01",
+            "name": "[parameters('webappname')]",
+            "type": "Microsoft.Web/sites",
+            "properties": {
+                "name": "[parameters('webappname')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',variables('hostingPlanName'))]"
+            },
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingplanname'))]"
+            ]
+        },
+        {
+            "apiVersion": "2016-09-01",
+            "name": "[variables('hostingplanname')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "name": "[variables('hostingplanname')]",
+                "workerSizeId": "0",
+                "reserved": false,
+                "numberOfWorkers": "1"
+            },
+            "sku": {
+                "Tier": "Free",
+                "Name": "F1"
+            }
+        }
+    ]
+}

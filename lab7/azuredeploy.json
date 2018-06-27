@@ -16,7 +16,7 @@
             "description": "User name for the Virtual Machine."
           }
         },
-        "keyVaultName": {
+         "keyVaultName": {
            "type": "string",
            "metadata": {
                 "description": ""

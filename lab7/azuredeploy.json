@@ -88,55 +88,11 @@
         "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, 'vm.json')]"
     },
     "resources": [
-        {
-            "name": "deployVM",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('vmtemplateuri')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "adminPassword": {
-                        "reference": {
-                            "keyVault": {
-                                "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyvaultname'))]"
-                            },
-                            "secretName": "[parameters('secretName')]"
-                        }
-                    },
-                    "adminUsername": {
-                        "value": "[parameters('adminUsername')]"
-                    },
-                    "vmName": {
-                        "value": "[parameters('vmName')]"
-                    },
-                    "vnetName": {
-                        "value": "[parameters('vnetName')]"
-                    },
-                    "numberOfDataDisks": {
-                        "value": "[parameters('numberOfDataDisks')]"
-                    },
-                    "dnsLabelPrefix": {
-                        "value": "[parameters('dnsLabelPrefix')]"
-                    },
-                    "ubuntuOSVersion": {
-                        "value": "[parameters('ubuntuOSVersion')]"
-                    },
-                    "vnetPrefix": {
-                        "value": "[parameters('vnetPrefix')]"
-                    },
-                    "subnetName": {
-                        "value": "[parameters('subnetName')]"
-                    },
-                    "subnetPrefix": {
-                        "value": "[parameters('subnetPrefix')]"
-                    }
-                }
-            }
-        }
     ],
-    "outputs": {}
+    "outputs": {
+        "uri": {
+            "type": "string",
+            "value": "[variables('vmtemplateuri')]"
+        }
+    }
 }

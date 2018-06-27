@@ -92,9 +92,6 @@
             "name": "deployVM",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
-            "tags": {
-                "displayName": "deployVM"
-            },
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {

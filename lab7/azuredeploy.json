@@ -118,6 +118,24 @@
                     },
                     "vnetName": {
                         "value": "[parameters('vnetName')]"
+                    },
+                    "numberOfDataDisks": {
+                        "value": "[parameters('numberOfDataDisks')]"
+                    },
+                    "dnsLabelPrefix": {
+                        "value": "[parameters('dnsLabelPrefix')]"
+                    },
+                    "ubuntuOSVersion": {
+                        "value": "[parameters('ubuntuOSVersion')]"
+                    },
+                    "vnetPrefix": {
+                        "value": "[parameters('vnetPrefix')]"
+                    },
+                    "subnetName": {
+                        "value": "[parameters('subnetName')]"
+                    },
+                    "subnetPrefix": {
+                        "value": "[parameters('subnetPrefix')]"
                     }
                 }
             }

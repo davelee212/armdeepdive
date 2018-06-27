@@ -3,87 +3,87 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "numberOfDataDisks": {
-           "type": "int",
-           "defaultValue": 1,
-           "maxValue": 2,
-           "metadata": {
+            "type": "int",
+            "defaultValue": 1,
+            "maxValue": 2,
+            "metadata": {
                 "description": "number of data disks (max is 1)"
             }
         },
         "adminUsername": {
-          "type": "string",
-          "metadata": {
-            "description": "User name for the Virtual Machine."
-          }
+            "type": "string",
+            "metadata": {
+                "description": "User name for the Virtual Machine."
+            }
         },
-         "keyvaultname": {
-           "type": "string",
-           "metadata": {
+        "keyvaultname": {
+            "type": "string",
+            "metadata": {
                 "description": ""
             }
         },
         "secretName": {
-           "type": "string",
-           "metadata": {
+            "type": "string",
+            "metadata": {
                 "description": ""
             }
         },
         "vmName": {
-           "type": "string",
-           "maxLength": 64,
-           "minLength": 1,
-           "metadata": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "metadata": {
                 "description": "Name for the virtual machine"
             }
         },
         "dnsLabelPrefix": {
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-            "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-          }
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
         },
         "ubuntuOSVersion": {
-          "type": "string",
-          "defaultValue": "16.04-LTS",
-          "allowedValues": [
-            "14.04-LTS",
-            "16.04-LTS",
-            "17.04",
-            "17.10"
-          ],
-          "metadata": {
-            "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
-          }
+            "type": "string",
+            "defaultValue": "16.04-LTS",
+            "allowedValues": [
+                "14.04-LTS",
+                "16.04-LTS",
+                "17.04",
+                "17.10"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
         },
         "vnetName": {
-           "type": "string",
-           "metadata": {
+            "type": "string",
+            "metadata": {
                 "description": "Name for the virtual network"
             }
         },
         "vnetPrefix": {
-           "type": "string",
-           "defaultValue": "10.0.0.0/16",
-           "metadata": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/16",
+            "metadata": {
                 "description": "CIDR address space for the virtual network"
             }
         },
         "subnetName": {
-           "type": "string",
-           "defaultValue": "Subnet",
-           "metadata": {
+            "type": "string",
+            "defaultValue": "Subnet",
+            "metadata": {
                 "description": "Name for the subnet - defaults to Subnet"
             }
         },
         "subnetPrefix": {
-           "type": "string",
-           "defaultValue": "10.0.0.0/24",
-           "metadata": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/24",
+            "metadata": {
                 "description": "CIDR address space for the subnet"
             }
         }
-      },
+    },
     "variables": {
         "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, '/vm.json')]"
     },
@@ -104,13 +104,22 @@
                 "parameters": {
                     "adminPassword": {
                         "reference": {
-                          "keyVault": {
-                            "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyvaultname'))]"
-                          },
-                          "secretName": "[parameters('secretName')]"
+                            "keyVault": {
+                                "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyvaultname'))]"
+                            },
+                            "secretName": "[parameters('secretName')]"
                         }
-                      }                
-                 }
+                    },
+                    "adminUsername": {
+                        "value": "[parameters('adminUsername')]"
+                    },
+                    "vmName": {
+                        "value": "[parameters('vmName')]"
+                    },
+                    "vnetName": {
+                        "value": "[parameters('vnetName')]"
+                    }
+                }
             }
         }
     ],

@@ -85,7 +85,7 @@
         }
       },
     "variables": {
-        "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, 'armdeepdrive/lab7/vm.json')]"
+        "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, '/vm.json')]"
     },
     "resources": [
         {
@@ -101,7 +101,16 @@
                     "uri": "[variables('vmtemplateuri')]",
                     "contentVersion": "1.0.0.0"
                 },
-                "parameters": {}
+                "parameters": {
+                    "adminPassword": {
+                        "reference": {
+                          "keyVault": {
+                            "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyvaultname'))]"
+                          },
+                          "secretName": "[parameters('secretName')]"
+                        }
+                      }                
+                 }
             }
         }
     ],

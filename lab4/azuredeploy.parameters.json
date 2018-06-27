@@ -1,0 +1,20 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminUsername": {
+        "value": "davelee"
+      },
+      "adminPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/3a8993a1-22ae-442c-a4ff-7a1a5fd9f6a4/resourceGroups/keyVaults/providers/Microsoft.KeyVault/vaults/daveleekeyvault"
+          },
+          "secretName": "ubuntuDefaultPassword"
+        }
+      },
+      "vnetName": {
+        "value": "ubuntuVnet"
+      }
+    }
+  }

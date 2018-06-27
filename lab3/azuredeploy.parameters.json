@@ -13,8 +13,11 @@
         "secretName": "ubuntuDefaultPassword"
       }
     },
-    "dnsLabelPrefix": {
-      "value": "davelee-lab3vm"
-    }
+    "vnetName": {
+      "value": "ubuntuVnet"
+    },
+    "subnetName": {
+      "value": "ubuntuSubnet"
+  }
   }
 }

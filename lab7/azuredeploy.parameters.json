@@ -10,6 +10,12 @@
       },
       "secretName": {
         "value": "ubuntuDefaultPassword"
+      },
+      "vmName": {
+          "value": "justworkwillyou"
+      },
+      "vnetName": {
+          "value": "myvNet"
       }
     }
   }

@@ -85,7 +85,7 @@
         }
     },
     "variables": {
-        "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, '/vm.json')]"
+        "vmtemplateuri": "[uri(deployment().properties.templateLink.uri, 'vm.json')]"
     },
     "resources": [
         {

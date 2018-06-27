@@ -16,7 +16,7 @@
             "description": "User name for the Virtual Machine."
           }
         },
-         "keyVaultName": {
+         "keyvaultname": {
            "type": "string",
            "metadata": {
                 "description": ""
@@ -105,7 +105,7 @@
                     "adminPassword": {
                         "reference": {
                           "keyVault": {
-                            "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
+                            "id": "[resourceid('keyvaults', 'Microsoft.KeyVault/vaults', parameters('keyvaultname'))]"
                           },
                           "secretName": "[parameters('secretName')]"
                         }
